@@ -2,7 +2,7 @@ version: "3"
 
 services:
   traefik:
-    image: traefik:v3.0.0-beta3
+    image: traefik:latest
     restart: always
     ports:
       - target: 80
@@ -36,6 +36,11 @@ services:
       - "--providers.file.watch=true"
       - "--providers.file.directory=/etc/traefik/config"
       - "--providers.file.debugloggeneratedtemplate=true"
+      - "--certificatesresolvers.myresolver.acme.email=cloudyunn@cloudyunn.com"
+      - "--certificatesresolvers.myresolver.acme.storage=acme.json"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudlfare"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=2s"
     networks:
       - traefik
     labels:
@@ -65,8 +70,9 @@ services:
       # - "traefik.http.routers.traefik-dashboard-api-secure.service=api@internal"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./certs/:/data/certs/:ro
-      - ./config/:/etc/traefik/config/:ro
+      - /data/certs/:/certs/:ro
+      - /data/config/:/etc/traefik/config/:ro
+      - /data/certs/acme:/etc/traefik/acme
     healthcheck:
       test: ["CMD-SHELL", "wget -q --spider --proxy off localhost:8080/ping || exit 1"]
       interval: 3s
@@ -75,6 +81,10 @@ services:
       driver: "json-file"
       options:
         max-size: "1m"
+
+    environment:
+      - CF_API_EMAIL=wojiuchigua@gmail.com
+      - CF_DNS_API_TOKEN=RGqKqG5kBDF7kDhS8S2jUzytz2w7wpNHYIh3zh2r
 
 networks:
   traefik:
