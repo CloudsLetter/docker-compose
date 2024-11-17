@@ -39,7 +39,7 @@ services:
       - "--certificatesresolvers.cyi.acme.email=cloudyin@cloudyin.com"
       - "--certificatesresolvers.cyi.acme.storage=acme.json"
       - "--certificatesresolvers.cyi.acme.dnschallenge=true"
-      - "--certificatesresolvers.cyi.acme.dnschallenge.provider=cloudlfare"
+      - "--certificatesresolvers.cyi.acme.dnschallenge.provider=cloudflare"
       - "--certificatesresolvers.cyi.acme.dnschallenge.delaybeforecheck=2s"
       - "--certificatesresolvers.cyu.acme.email=cloudyin@cloudyin.com"
       - "--certificatesresolvers.cyu.acme.storage=acme.json"
