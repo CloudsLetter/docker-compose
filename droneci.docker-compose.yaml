@@ -19,7 +19,7 @@ services:
       - "traefik.http.routers.ci.rule=Host(`ci.cloudyi.xyz`)"
       - "traefik.http.services.ci.loadbalancer.server.port=80"
       - "traefik.http.routers.ci.service=ci"
-      - "traefik.http.routers.ci.tls.certresolver=cyu"
+      - "traefik.http.routers.ci.tls.certresolver=cyi"
 
     networks:
       - traefik
