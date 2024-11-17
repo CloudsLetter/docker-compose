@@ -11,7 +11,7 @@ services:
       - DRONE_GITHUB_CLIENT_SECRET=43df47b111544beefbe778bbe263829288fb2e8c
       - DRONE_RPC_SECRET=d0e0f6e598903fec24a96ffd37023ba8
       - DRONE_SERVER_HOST=ci.cloudyi.xyz
-      - DRONE_SERVER_PROTO=https
+      - DRONE_SERVER_PROTO=http
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ci.entrypoints=https"
