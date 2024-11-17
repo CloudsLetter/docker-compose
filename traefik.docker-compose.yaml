@@ -36,11 +36,16 @@ services:
       - "--providers.file.watch=true"
       - "--providers.file.directory=/etc/traefik/config"
       - "--providers.file.debugloggeneratedtemplate=true"
-      - "--certificatesresolvers.myresolver.acme.email=cloudyunn@cloudyunn.com"
-      - "--certificatesresolvers.myresolver.acme.storage=acme.json"
-      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudlfare"
-      - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=2s"
+      - "--certificatesresolvers.cyi.acme.email=cloudyunn@cloudyunn.com"
+      - "--certificatesresolvers.cyi.acme.storage=acme.json"
+      - "--certificatesresolvers.cyi.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.cyi.acme.dnschallenge.provider=cloudlfare"
+      - "--certificatesresolvers.cyi.acme.dnschallenge.delaybeforecheck=2s"
+      - "--certificatesresolvers.cyu.acme.email=cloudyunn@cloudyunn.com"
+      - "--certificatesresolvers.cyu.acme.storage=acme.json"
+      - "--certificatesresolvers.cyu.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.cyu.acme.dnschallenge.provider=dnspod"
+      - "--certificatesresolvers.cyu.acme.dnschallenge.delaybeforecheck=2s"
     networks:
       - traefik
     labels:
@@ -70,9 +75,9 @@ services:
       # - "traefik.http.routers.traefik-dashboard-api-secure.service=api@internal"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /data/certs/:/certs/:ro
-      - /data/config/:/etc/traefik/config/:ro
-      - /data/certs/acme:/etc/traefik/acme
+      - /data/traefik/certs/:/certs/:ro
+      - /data/traefik/config/:/etc/traefik/config/:ro
+      - /data/traefik/certs/acme:/etc/traefik/acme
     healthcheck:
       test: ["CMD-SHELL", "wget -q --spider --proxy off localhost:8080/ping || exit 1"]
       interval: 3s
@@ -85,7 +90,7 @@ services:
     environment:
       - CF_API_EMAIL=wojiuchigua@gmail.com
       - CF_DNS_API_TOKEN=RGqKqG5kBDF7kDhS8S2jUzytz2w7wpNHYIh3zh2r
-
+      - DNSPOD_API_KEY=f7cc8a7b37e14590a43f7e06b9326c73
 networks:
   traefik:
     external: true
