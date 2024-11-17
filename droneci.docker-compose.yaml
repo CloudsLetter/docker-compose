@@ -14,8 +14,8 @@ services:
       - DRONE_SERVER_PROTO=http
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ci.entrypoints=https"
-      - "traefik.http.routers.ci.tls=true"
+      - "traefik.http.routers.ci.entrypoints=http"
+      - "traefik.http.routers.ci.tls=false"
       - "traefik.http.routers.ci.rule=Host(`ci.cloudyi.xyz`)"
       - "traefik.http.services.ci.loadbalancer.server.port=80"
       - "traefik.http.routers.ci.service=ci"
