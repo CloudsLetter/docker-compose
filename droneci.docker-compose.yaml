@@ -10,13 +10,13 @@ services:
       - DRONE_GITHUB_CLIENT_ID=Ov23li5MAcyJc0MIG9jw
       - DRONE_GITHUB_CLIENT_SECRET=43df47b111544beefbe778bbe263829288fb2e8c
       - DRONE_RPC_SECRET=d0e0f6e598903fec24a96ffd37023ba8
-      - DRONE_SERVER_HOST=ci.cloudyun.xyz
+      - DRONE_SERVER_HOST=ci.cloudyi.xyz
       - DRONE_SERVER_PROTO=https
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ci.entrypoints=https"
       - "traefik.http.routers.ci.tls=true"
-      - "traefik.http.routers.ci.rule=Host(`ci.cloudyun.xyz`)"
+      - "traefik.http.routers.ci.rule=Host(`ci.cloudyi.xyz`)"
       - "traefik.http.services.ci.loadbalancer.server.port=80"
       - "traefik.http.routers.ci.service=ci"
       - "traefik.http.routers.ci.tls.certresolver=cyu"
