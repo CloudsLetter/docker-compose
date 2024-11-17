@@ -90,7 +90,7 @@ services:
     environment:
       - CF_API_EMAIL=wojiuchigua@gmail.com
       - CF_DNS_API_TOKEN=RGqKqG5kBDF7kDhS8S2jUzytz2w7wpNHYIh3zh2r
-      - DNSPOD_API_KEY=f7cc8a7b37e14590a43f7e06b9326c73
+      - DNSPOD_API_KEY=0b1e26a95afff614f6b15dbea06b9ef0
 networks:
   traefik:
     external: true
