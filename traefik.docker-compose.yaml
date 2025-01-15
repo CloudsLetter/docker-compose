@@ -37,13 +37,13 @@ services:
       - "--providers.file.directory=/etc/traefik/config"
       - "--providers.file.debugloggeneratedtemplate=true"
       - "--certificatesresolvers.cyi.acme.email=cloudyun@cloudyun.xyz"
-      - "--certificatesresolvers.cyi.acme.storage=acme.json"
+      - "--certificatesresolvers.cyi.acme.storage=/etc/traefik/acme/acme.json"
       - "--certificatesresolvers.cyi.acme.dnschallenge=true"
       - "--certificatesresolvers.cyi.acme.dnschallenge.provider=cloudflare"
       - "--certificatesresolvers.cyi.acme.dnschallenge.delaybeforecheck=2s"
-      - "--certificatesresolvers.cyu.acme.email=cloudyun@cloudyun.xyz"
-      - "--certificatesresolvers.cyu.acme.storage=acme.json"
       - "--certificatesresolvers.cyu.acme.httpChallenge=true"
+      - "--certificatesresolvers.cyu.acme.email=cloudyun@cloudyun.xyz"
+      - "--certificatesresolvers.cyu.acme.storage=/etc/traefik/acme/acme.json"
       - "--certificatesresolvers.cyu.acme.httpChallenge.entrypoint=http"
     networks:
       - traefik
