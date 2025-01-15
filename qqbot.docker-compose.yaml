@@ -11,7 +11,7 @@ services:
       - "traefik.http.routers.qqbot.rule=Host(`qqbot.cloudyi.xyz`)"
       - "traefik.http.services.qqbot.loadbalancer.server.port=8080"
       - "traefik.http.routers.qqbot.service=qqbot"
-      - "traefik.http.routers.qqbot.tls.certresolver=cyi"
+      - "traefik.http.routers.qqbot.tls.certresolver=cyu"
 
     networks:
       - traefik
