@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  drone:
+    image: wojiuchigua/satellite:latest
+    container_name: satellite
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.satellite.entrypoints=https"
+      - "traefik.http.routers.satellite.tls=true"
+      - "traefik.http.routers.satellite.rule=Host(`satellite.cloudyi.xyz`)"
+      - "traefik.http.services.satellite.loadbalancer.server.port=80"
+      - "traefik.http.routers.satellite.service=satellite"
+      - "traefik.http.routers.satellite.tls.certresolver=cyi"
+
+    networks:
+      - traefik
+    restart: always
+
+networks:
+  traefik:
+    external: true
