@@ -13,4 +13,8 @@ services:
     ports:
       - "5432:5432"
     restart: always
-
+    networks:
+      - traefik
+networks:
+  traefik:
+    external: true
